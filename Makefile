@@ -9,6 +9,11 @@ REPO_NAME ?= microtrader
 TEST_REPO_NAME ?= microtrader-dev
 TEST_DIR ?= build/test-results/junit/
 
+# AWS ECR settings
+DOCKER_REGISTRY ?= 850074925782.dkr.ecr.us-west-1.amazonaws.com
+AWS_ACCOUNT_ID ?= 850074925782
+DOCKER_LOGIN_EXPRESSION := eval $$(aws ecr get-login --registry-ids $(AWS_ACCOUNT_ID) --no-include-email)
+
 # Release settings
 export HTTP_PORT ?= 8000
 export AUDIT_HTTP_ROOT ?= /audit/
@@ -27,7 +32,7 @@ include Makefile.settings
 
 # Prints version
 version:
-	@ echo $(APP_VERSION)
+	@ echo '{"Version": "$(APP_VERSION)"}'
 
 # Runs unit and integration tests
 # Pulls images and base images by default
