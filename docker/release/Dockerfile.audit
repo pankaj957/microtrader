@@ -1,5 +1,5 @@
-FROM 850074925782.dkr.ecr.us-west-1.amazonaws.com/dockerproductionaws/microtrader-base:latest
-MAINTAINER Justin Menga <justin.menga@gmail.com>
+FROM 850074925782.dkr.ecr.us-west-2.amazonaws.com/dockerproductionaws/microtrader-base
+MAINTAINER Pankaj Jadhav <jadhavpankaj957@gmail.com>
 LABEL application.component=microtrader-audit
 HEALTHCHECK --interval=3s --retries=20 CMD curl -fs http://localhost:${HTTP_PORT:-33000}/${HTTP_ROOT}
 
